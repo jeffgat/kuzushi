@@ -14,6 +14,7 @@ const StackLayout = (props: Props) => {
                     headerShown: false,
                 }}>
                 <Stack.Screen name="(tabs)" />
+                <Stack.Screen name="(auth)" />
             </Stack>
         </NativeBaseProvider>
     );

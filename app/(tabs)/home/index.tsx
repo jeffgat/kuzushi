@@ -13,6 +13,7 @@ import {
     Flex,
 } from 'native-base';
 import { Feather, Entypo, Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 // types
 type Props = {};
@@ -48,13 +49,27 @@ const MODAL_BG = 'neutral.800';
 
 const Home = (props: Props) => {
     const [showModal, setShowModal] = useState(false);
+    const router = useRouter();
     return (
         <VStack bg="neutral.800" width="100%" height="100%">
             <Center>
+                <Button onPress={() => router.push('/register')} size="sm">
+                    dev: register
+                </Button>
                 <VStack pt={8} alignItems="center">
-                    <Heading color="neutral.100">Kuzushi</Heading>
-                    <Text color="neutral.300">Log your jits performance over time.</Text>
+                    <Heading color="neutral.100" size="xl">
+                        Kuzushi
+                    </Heading>
+                    <Text color="neutral.300" fontSize={16}>
+                        Log your jits performance over time.
+                    </Text>
                 </VStack>
+                <Text my={12} color="neutral.300">
+                    (First timer tutorial modal?)
+                </Text>
+                <Text my={12} color="neutral.300">
+                    What to display here..
+                </Text>
                 <Center mt={4}>
                     <Text color="neutral.300">Open modal to add submission</Text>
                     <Button
