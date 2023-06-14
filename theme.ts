@@ -204,4 +204,12 @@ const colors = {
         1000: '#233B3B',
     },
 };
-export const theme = extendTheme({ colors });
+
+const components = {
+    Input: {
+        baseStyle: {
+            color: '#fff',
+        },
+    },
+};
+export const theme = extendTheme({ colors, components });
