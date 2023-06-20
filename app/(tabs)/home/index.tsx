@@ -18,29 +18,36 @@ import { useRouter } from 'expo-router';
 // types
 type Props = {};
 
-const ModalItem = () => (
+const ModalItem = ({ name, descrip }: any) => (
     <Flex
         direction="row"
         align="center"
         justify="space-between"
         w="full"
         h="20"
-        bg="blue.300"
+        bg="neutral.850"
+        borderWidth={1}
+        borderColor="rust.200"
         rounded="md"
-        shadow={2}>
+        // shadow={2}
+    >
         <Flex direction="row" align="center" justify="center" h="100%">
-            <Box w={16} h="100%" bg="rust.100" />
+            {/* <Box w={16} h="100%" bg="rust.100" /> */}
 
             <Box ml={4}>
-                <Text color="neutral.50" fontSize={20} fontWeight={600}>
-                    Gullotine
+                <Text
+                    color="neutral.50"
+                    fontSize={16}
+                    fontWeight={800}
+                    textTransform="uppercase">
+                    {name}
                 </Text>
-                <Text color="neutral.50">Item description</Text>
+                <Text color="neutral.200">{descrip}</Text>
             </Box>
         </Flex>
-        <Box pr={4}>
+        {/* <Box pr={4}>
             <Ionicons name="information-circle" size={24} color="white" />
-        </Box>
+        </Box> */}
     </Flex>
 );
 
@@ -106,22 +113,21 @@ const Home = (props: Props) => {
                                 </Text>
                             </Modal.Header>
                             <Modal.Body>
-                                {/* <FormControl>
-                                    <FormControl.Label>
-                                        <Text color="neutral.100">Name</Text>
-                                    </FormControl.Label>
-                                    <Input />
-                                </FormControl>
-                                <FormControl mt="3">
-                                    <Text color="neutral.100">Email</Text>
-                                    <Input />
-                                </FormControl> */}
                                 <VStack space={4} alignItems="center">
-                                    <ModalItem />
-                                    <ModalItem />
-                                    <ModalItem />
+                                    <ModalItem
+                                        name="Chokes/Strangles"
+                                        descrip="RNC, d'arce, gullotine, etc."
+                                    />
+                                    <ModalItem
+                                        name="Leg locks"
+                                        descrip="Heel hook, knee bar, etc."
+                                    />
+                                    <ModalItem
+                                        name="Arm/Shoulder locks"
+                                        descrip="Arm bar, kimura, etc"
+                                    />
+                                    <ModalItem name="Other" descrip="All other subs" />
                                 </VStack>
-                                ;
                             </Modal.Body>
                             <Modal.Footer
                                 bg={MODAL_BG}

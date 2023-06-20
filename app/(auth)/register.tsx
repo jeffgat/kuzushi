@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     VStack,
     Center,
@@ -11,11 +11,30 @@ import {
     Link,
 } from 'native-base';
 import { useRouter } from 'expo-router';
+import { type SubmitHandler, useForm } from 'react-hook-form';
+
+type Inputs = {
+    example: string;
+    exampleRequired: string;
+};
 
 type Props = {};
 
 const Register = (props: Props) => {
     const router = useRouter();
+    const [email, setEmail] = useState('');
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm<Inputs>();
+
+    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+    // todo - setup form.. don't have form elements in native, need to set up controls
+
     return (
         <VStack bg="neutral.800" width="100%" height="100%">
             <Center>
@@ -44,13 +63,8 @@ const Register = (props: Props) => {
                         Already have an account?
                     </Link>
                 </Box>
-                <VStack
-                    mt={8}
-                    w="90%"
-                    maxW="400"
-                    space={4}
-                    overflow="hidden"
-                    rounded="md">
+
+                <VStack mt={8} w="90%" maxW="400" space={4} rounded="md">
                     <Box>
                         <Input
                             placeholder="Email"

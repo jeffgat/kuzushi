@@ -49,7 +49,6 @@ const Login = (props: Props) => {
                     w="90%"
                     maxW="400"
                     space={4}
-                    overflow="hidden"
                     rounded="md">
                     <Box>
                         <Input
