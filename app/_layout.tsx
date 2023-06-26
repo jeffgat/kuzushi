@@ -1,14 +1,13 @@
-import { View, Text } from 'react-native';
 import React from 'react';
-import { NativeBaseProvider, VStack } from 'native-base';
+import { NativeBaseProvider } from 'native-base';
 import { Stack } from 'expo-router';
-import { theme } from '@/theme';
+import { config, theme } from '@/theme';
 
 type Props = {};
 
 const StackLayout = (props: Props) => {
     return (
-        <NativeBaseProvider theme={theme}>
+        <NativeBaseProvider theme={theme} config={config}>
             <Stack
                 screenOptions={{
                     headerShown: false,

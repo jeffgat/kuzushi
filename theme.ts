@@ -1,3 +1,4 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { extendTheme } from 'native-base';
 
 const colors = {
@@ -213,3 +214,9 @@ const components = {
     },
 };
 export const theme = extendTheme({ colors, components });
+
+export const config = {
+    dependencies: {
+        'linear-gradient': LinearGradient,
+    },
+};

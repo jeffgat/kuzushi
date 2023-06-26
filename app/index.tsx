@@ -15,9 +15,9 @@ export default function Page() {
     if (!isReady) {
         <SplashScreen />;
     }
-    if (loggedIn) {
-        return <Redirect href="/home" />;
-    } else {
-        return <Redirect href="/register" />;
-    }
+    // if (loggedIn) {
+    return <Redirect href="/home" />;
+    // } else {
+    //     return <Redirect href="/register" />;
+    // }
 }

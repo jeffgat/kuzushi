@@ -11,54 +11,51 @@ import {
     FormControl,
     Icon,
     Flex,
+    View,
+    IconButton,
 } from 'native-base';
 import { Feather, Entypo, Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import SubmissionModal from '@/components/SubmissionModal';
 
 // types
 type Props = {};
 
-const ModalItem = ({ name, descrip }: any) => (
-    <Flex
-        direction="row"
-        align="center"
-        justify="space-between"
-        w="full"
-        h="20"
-        bg="neutral.850"
-        borderWidth={1}
-        borderColor="rust.200"
-        rounded="md"
-        // shadow={2}
-    >
-        <Flex direction="row" align="center" justify="center" h="100%">
-            {/* <Box w={16} h="100%" bg="rust.100" /> */}
-
-            <Box ml={4}>
-                <Text
-                    color="neutral.50"
-                    fontSize={16}
-                    fontWeight={800}
-                    textTransform="uppercase">
-                    {name}
-                </Text>
-                <Text color="neutral.200">{descrip}</Text>
-            </Box>
-        </Flex>
-        {/* <Box pr={4}>
-            <Ionicons name="information-circle" size={24} color="white" />
-        </Box> */}
-    </Flex>
-);
-
-// constants
-const MODAL_BG = 'neutral.800';
+const Stats = () => {
+    return (
+        <Center mt={4}>
+            <Text fontSize={20} fontWeight={600} color="white">
+                Stats
+            </Text>
+            <Text color="neutral.300">No stats to display yet. Add a submission.</Text>
+        </Center>
+    );
+};
 
 const Home = (props: Props) => {
     const [showModal, setShowModal] = useState(false);
     const router = useRouter();
+
     return (
         <VStack bg="neutral.800" width="100%" height="100%">
+            <IconButton
+                position="absolute"
+                bottom={4}
+                right={4}
+                bg="rust.400"
+                rounded="full"
+                onPress={() => setShowModal(true)}
+                icon={<Icon as={Entypo} name="plus" size={6} />}
+                _icon={{
+                    color: 'white',
+                }}
+                _hover={{
+                    bg: 'rust.500',
+                }}
+                _pressed={{
+                    bg: 'rust.600',
+                }}
+            />
             <Center>
                 <Button onPress={() => router.push('/register')} size="sm">
                     dev: register
@@ -71,91 +68,9 @@ const Home = (props: Props) => {
                         Log your jits performance over time.
                     </Text>
                 </VStack>
-                <Text my={12} color="neutral.300">
-                    (First timer tutorial modal?)
-                </Text>
-                <Text my={12} color="neutral.300">
-                    What to display here..
-                </Text>
-                <Center mt={4}>
-                    <Text color="neutral.300">Open modal to add submission</Text>
-                    <Button
-                        bg="rust.400"
-                        mt={2}
-                        _pressed={{
-                            bg: 'rust.600',
-                        }}
-                        onPress={() => setShowModal(true)}
-                        endIcon={
-                            <Icon as={Entypo} name="chevron-right" size="sm" ml={-1} />
-                        }>
-                        <Text fontWeight={600} color="white">
-                            Add
-                        </Text>
-                    </Button>
-                    <Modal
-                        isOpen={showModal}
-                        onClose={() => setShowModal(false)}
-                        animationPreset="slide"
-                        // _slide={{ duration: 400 }}
-                        size="full"
-                        borderColor="red">
-                        <Modal.Content
-                            borderColor="red"
-                            bg={MODAL_BG}
-                            marginBottom={0}
-                            marginTop="auto"
-                            h="full">
-                            <Modal.CloseButton />
-                            <Modal.Header bg={MODAL_BG} borderBottomColor="neutral.600">
-                                <Text color="neutral.50" fontSize="lg" fontWeight={700}>
-                                    Add submission
-                                </Text>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <VStack space={4} alignItems="center">
-                                    <ModalItem
-                                        name="Chokes/Strangles"
-                                        descrip="RNC, d'arce, gullotine, etc."
-                                    />
-                                    <ModalItem
-                                        name="Leg locks"
-                                        descrip="Heel hook, knee bar, etc."
-                                    />
-                                    <ModalItem
-                                        name="Arm/Shoulder locks"
-                                        descrip="Arm bar, kimura, etc"
-                                    />
-                                    <ModalItem name="Other" descrip="All other subs" />
-                                </VStack>
-                            </Modal.Body>
-                            <Modal.Footer
-                                bg={MODAL_BG}
-                                borderTopColor="neutral.600"
-                                safeAreaBottom
-                                safeAreaX>
-                                <Button.Group space={2}>
-                                    <Button
-                                        variant="outline"
-                                        borderColor="rust.400"
-                                        onPress={() => {
-                                            setShowModal(false);
-                                        }}>
-                                        <Text color="rust.400">Cancel</Text>
-                                    </Button>
-                                    <Button
-                                        bg="rust.400"
-                                        onPress={() => {
-                                            setShowModal(false);
-                                        }}>
-                                        Save
-                                    </Button>
-                                </Button.Group>
-                            </Modal.Footer>
-                        </Modal.Content>
-                    </Modal>
-                </Center>
-                ;
+                <Stats />
+
+                <SubmissionModal showModal={showModal} setShowModal={setShowModal} />
             </Center>
         </VStack>
     );
